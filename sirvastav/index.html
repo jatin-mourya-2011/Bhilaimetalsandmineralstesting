@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhilai Metals and Minerals Testing Services LLP | NABL Accredited</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           BASE STYLES & RESET (MODERN ENERGETIC THEME)
+           ========================================= */
+        :root {
+            --bg-main: #000000;     /* Pure sleek black */
+            --bg-alt: #09090b;      /* Zinc 950 */
+            --bg-card: rgba(255, 255, 255, 0.03); /* Frosted Glass */
+            --text-main: #ffffff;   
+            --text-light: #f4f4f5;  
+            --text-muted: #a1a1aa;  
+            --accent: #FF4B2B;      /* Blazing energetic orange */
+            --accent-gradient: linear-gradient(135deg, #FF416C, #FF4B2B); /* Forge Gradient */
+            --accent-glow: rgba(255, 75, 43, 0.3);
+            --border-color: rgba(255, 255, 255, 0.08); 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        img { max-width: 100%; display: block; object-fit: cover; }
+
+        /* =========================================
+           CUSTOM CURSOR
+           ========================================= */
+        .custom-cursor {
+            position: fixed; top: 0; left: 0; width: 20px; height: 20px;
+            background: var(--accent-gradient); border-radius: 50%; pointer-events: none;
+            z-index: 9999; transform: translate(-50%, -50%);
+            transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), height 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        .cursor-hover { width: 60px; height: 60px; background: rgba(255,255,255,0.1); backdrop-filter: blur(2px); border: 1px solid rgba(255,255,255,0.5); box-shadow: none; }
+
+        /* =========================================
+           NAVIGATION
+           ========================================= */
+        .navbar {
+            position: fixed; top: 0; width: 100%; padding: 1.2rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100; background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color);
+        }
+        .logo-container { display: flex; align-items: center; gap: 12px; color: var(--text-main); text-decoration: none; }
+        .nav-logo { width: 40px; height: 40px; border-radius: 50%; background: white; padding: 2px; }
+        .nav-brand { font-weight: 800; font-size: 1rem; letter-spacing: -0.5px; color: white; max-width: 250px; line-height: 1.2;}
+        
+        .nav-links { display: flex; gap: 35px; background: rgba(255,255,255,0.03); padding: 10px 30px; border-radius: 50px; border: 1px solid var(--border-color); }
+        .nav-links button {
+            background: none; border: none; color: var(--text-muted); font-family: 'Inter';
+            font-weight: 500; font-size: 0.9rem; letter-spacing: 0.5px;
+            transition: color 0.3s; position: relative;
+        }
+        .nav-links button:hover, .nav-links button.active { color: #ffffff; }
+        .nav-links button.active::after {
+            content: ''; position: absolute; width: 5px; height: 5px; border-radius: 50%;
+            bottom: -10px; left: 50%; transform: translateX(-50%);
+            background: var(--accent); box-shadow: 0 0 10px var(--accent);
+        }
+
+        .nabl-badge {
+            font-size: 0.8rem; font-weight: 700; padding: 8px 18px;
+            background: rgba(255, 75, 43, 0.1); border: 1px solid rgba(255, 75, 43, 0.3);
+            border-radius: 50px; color: #FF4B2B; display: flex; align-items: center; gap: 8px;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        /* =========================================
+           PAGE VIEW MANAGER
+           ========================================= */
+        .page-view {
+            display: none; opacity: 0; animation: fadeIn 0.5s ease forwards;
+            padding-top: 100px; min-height: 100vh;
+        }
+        .page-view.active-view { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Global Padding */
+        .section-padding { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
+        .page-header { text-align: center; margin-bottom: 4rem; padding-top: 40px; }
+        .page-title { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; letter-spacing: -2px; margin-bottom: 1rem; color: var(--text-main); }
+        
+        /* Modern Gradient Text Utility */
+        .text-gradient {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* =========================================
+           HOME PAGE
+           ========================================= */
+        .hero {
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            padding: 0 5%; position: relative; margin-top: -100px; 
+            background: radial-gradient(circle at center, rgba(255, 65, 108, 0.15) 0%, transparent 50%),
+                        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.95)), 
+                        url('WhatsApp Image 2026-04-03 at 1.21.50 PM (2).jpeg') center/cover no-repeat;
+        }
+        
+        .hero-content { text-align: center; max-width: 1000px; z-index: 2; position: relative; }
+        
+        .hero-title { 
+            font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 900; line-height: 1; 
+            margin-bottom: 1.5rem; letter-spacing: -3px; 
+        }
+        .hero-subtitle { font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--text-muted); max-width: 650px; margin: 0 auto 3rem; font-weight: 400;}
+        
+        .cta-btn {
+            background: var(--accent-gradient); color: #fff; border: none; padding: 1.2rem 2.8rem;
+            font-weight: 600; font-size: 1.1rem; border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; display: inline-block;
+            box-shadow: 0 10px 25px var(--accent-glow);
+        }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(255, 65, 108, 0.5); color: #fff; }
+        
+        .cta-btn-outline { 
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); 
+            color: #fff; margin-left: 15px; box-shadow: none; backdrop-filter: blur(10px);
+        }
+        .cta-btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; box-shadow: none; }
+
+        .stats-bar {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+            background: var(--bg-alt); padding: 4rem 5%; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
+            position: relative; z-index: 10; text-align: center;
+        }
+        .stat-item h3 { font-size: 3rem; font-weight: 900; margin-bottom: 0.2rem; letter-spacing: -1px; }
+        .stat-item p { color: var(--text-muted); font-weight: 500; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;}
+
+        .home-section { padding: 120px 5%; background: var(--bg-main); }
+        .home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1400px; margin: 0 auto; align-items: center;}
+        
+        .home-services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1400px; margin: 3rem auto 0; }
+        .home-service-card { 
+            background: var(--bg-card); padding: 3rem; border-radius: 20px; 
+            border: 1px solid var(--border-color); backdrop-filter: blur(10px);
+            transition: transform 0.4s, border-color 0.4s, background 0.4s; 
+        }
+        .home-service-card:hover { 
+            transform: translateY(-10px); border-color: rgba(255, 75, 43, 0.5); 
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .home-service-card h4 { font-size: 1.5rem; color: var(--text-main); margin-bottom: 1rem; font-weight: 700; letter-spacing: -0.5px;}
+
+        /* =========================================
+           ABOUT PAGE
+           ========================================= */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+        .cert-highlight {
+            background: var(--bg-card); padding: 3rem; border-radius: 20px; border: 1px solid rgba(255, 75, 43, 0.2);
+            text-align: center; margin-top: 3rem; position: relative; overflow: hidden;
+        }
+        .cert-highlight::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--accent-gradient);
+        }
+        .cert-highlight img { max-width: 150px; margin: 0 auto 1.5rem; border-radius: 8px;}
+
+        .mission-vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 5rem; }
+        .mv-card {
+            background: var(--bg-card); padding: 3rem; border-radius: 20px; 
+            border: 1px solid var(--border-color); backdrop-filter: blur(10px);
+            transition: transform 0.4s, border-color 0.4s; 
+        }
+        .mv-card:hover { transform: translateY(-5px); border-color: rgba(255, 75, 43, 0.5); }
+
+        /* =========================================
+           SERVICES PAGE
+           ========================================= */
+        .service-row {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+            margin-bottom: 6rem; background: var(--bg-card); border-radius: 24px; overflow: hidden;
+            border: 1px solid var(--border-color); 
+        }
+        .service-row:nth-child(even) { direction: rtl; } 
+        .service-row:nth-child(even) > * { direction: ltr; }
+        .service-img-wrapper { height: 100%; min-height: 450px; position: relative; background: var(--bg-alt); }
+        .service-img-wrapper img { width: 100%; height: 100%; position: absolute; object-fit: cover; }
+        .service-content { padding: 4rem; }
+        .service-content h3 { font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 800; letter-spacing: -1px;}
+
+        /* =========================================
+           GALLERY PAGE
+           ========================================= */
+        .masonry-grid { column-count: 4; column-gap: 20px; }
+        .masonry-item { break-inside: avoid; margin-bottom: 20px; border-radius: 16px; overflow: hidden; position: relative; background: var(--bg-alt);}
+        .masonry-item img { width: 100%; display: block; transition: filter 0.4s, transform 0.4s; filter: grayscale(100%) opacity(0.7); }
+        .masonry-item:hover img { filter: grayscale(0%) opacity(1); transform: scale(1.05); }
+
+        /* =========================================
+           CONTACT PAGE
+           ========================================= */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; }
+        .info-block { margin-bottom: 3rem; }
+        .info-block h4 { color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.8rem; font-size: 0.8rem; font-weight: 600; }
+        .info-block p { font-size: 1.4rem; font-weight: 500; color: var(--text-main); }
+        
+        .contact-form { background: var(--bg-card); padding: 4rem; border-radius: 24px; border: 1px solid var(--border-color); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group input, .form-group textarea {
+            width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color);
+            padding: 1.2rem 1.5rem; color: var(--text-main); font-family: 'Inter', sans-serif; border-radius: 12px; outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s; font-size: 1rem;
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: #FF4B2B; box-shadow: 0 0 0 4px rgba(255, 75, 43, 0.1); }
+        .form-group textarea { resize: vertical; min-height: 150px; }
+        
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer { background: var(--bg-alt); padding: 5rem 5% 2rem; text-align: center; border-top: 1px solid var(--border-color); color: white; }
+        .footer-logo { width: 60px; margin: 0 auto 1.5rem; border-radius: 50%; background: white; padding: 2px; }
+        .footer-bottom { font-size: 0.85rem; color: var(--text-muted); display: flex; justify-content: space-between; max-width: 1400px; margin: 3rem auto 0; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem; }
+
+        @media (max-width: 1024px) {
+            .about-grid, .contact-grid, .service-row, .home-grid, .mission-vision-grid { grid-template-columns: 1fr; gap: 3rem;}
+            .home-services-grid, .stats-bar { grid-template-columns: 1fr 1fr; }
+            .service-row:nth-child(even) { direction: ltr; }
+            .masonry-grid { column-count: 3; }
+            .service-img-wrapper { min-height: 300px; }
+        }
+        @media (max-width: 768px) {
+            * { cursor: auto; } .custom-cursor { display: none; }
+            .nav-links { display: none; } 
+            .hide-mobile { display: none; } /* Hides long text on phones to prevent overlap */
+            .masonry-grid, .home-services-grid, .stats-bar { column-count: 1; grid-template-columns: 1fr; }
+            .section-padding, .home-section { padding: 80px 5%; }
+            .service-content, .contact-form { padding: 2rem; }
+            .hero-title { font-size: 3rem; letter-spacing: -1px; }
+            .cta-btn-outline { margin-left: 0; margin-top: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="#" onclick="navigate('home')" class="logo-container interactable">
+            <img src="Bhilai Metals and Minerals Testing Services LLP.png" alt="Logo" class="nav-logo" onerror="this.src='https://placehold.co/80x80/111/FFF?text=Logo'">
+            <span class="nav-brand">Bhilai Metals and Minerals <span class="hide-mobile"><br>Testing Services LLP</span></span>
+        </a>
+        <div class="nav-links">
+            <button onclick="navigate('home')" id="nav-home" class="interactable active">Home</button>
+            <button onclick="navigate('about')" id="nav-about" class="interactable">About</button>
+            <button onclick="navigate('services')" id="nav-services" class="interactable">Services</button>
+            <button onclick="navigate('gallery')" id="nav-gallery" class="interactable">Facility</button>
+            <button onclick="navigate('contact')" id="nav-contact" class="interactable">Contact</button>
+        </div>
+        <div class="nabl-badge interactable">
+            <span>NABL Accredited</span>
+        </div>
+    </nav>
+
+    <!-- MAIN APP CONTAINER -->
+    <main id="app">
+        
+        <!-- PAGE 1: HOME -->
+        <div id="view-home" class="page-view active-view">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Testing with <br><span class="text-gradient">Absolute Precision.</span></h1>
+                    <p class="hero-subtitle">An NABL Accredited Laboratory delivering uncompromising metallurgical and mechanical testing services.</p>
+                    <button onclick="navigate('services')" class="cta-btn interactable">Explore Capabilities</button>
+                    <button onclick="navigate('contact')" class="cta-btn cta-btn-outline interactable">Contact Us</button>
+                </div>
+            </section>
+
+            <section class="stats-bar">
+                <div class="stat-item gs_reveal">
+                    <h3 class="text-gradient">ISO</h3>
+                    <p>17025:2017 Certified</p>
+                </div>
+                <div class="stat-item gs_reveal">
+                    <h3 class="text-gradient">NABL</h3>
+                    <p>Accredited (TC-17749)</p>
+                </div>
+                <div class="stat-item gs_reveal">
+                    <h3 class="text-gradient">100%</h3>
+                    <p>Accuracy Standard</p>
+                </div>
+            </section>
+
+            <section class="home-section">
+                <div class="home-grid">
+                    <div class="home-text gs_reveal">
+                        <h2 class="page-title" style="text-align: left; padding-top: 0;">Definitive Diagnostics <br>for <span class="text-gradient">Heavy Industry</span></h2>
+                        <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem;">Bhilai Metals and Minerals Testing Services LLP is the region's premier testing facility. We provide comprehensive mechanical and metallurgical analysis, ensuring your materials meet the absolute highest safety parameters.</p>
+                        <button onclick="navigate('about')" class="cta-btn interactable" style="padding: 1rem 2rem; font-size: 1rem;">Discover Our Facility</button>
+                    </div>
+                    <div class="home-image gs_reveal" style="position: relative;">
+                        <img src="WhatsApp Image 2026-04-03 at 1.21.49 PM (1).jpeg" alt="Lab Control" style="border-radius: 20px;" onerror="this.src='https://placehold.co/800x600/111/FFF?text=Lab+Control'">
+                        <div style="position: absolute; bottom: -20px; left: -20px; background: var(--bg-alt); border: 1px solid rgba(255,255,255,0.1); padding: 1.5rem 2rem; border-radius: 16px; font-weight: 700; font-size: 1.1rem; backdrop-filter: blur(10px);">
+                            Uncompromising Quality
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="home-section" style="background: var(--bg-alt);">
+                <div class="page-header gs_reveal" style="margin-bottom: 2rem; padding-top: 0;">
+                    <h2 class="page-title">Core <span class="text-gradient">Capabilities</span></h2>
+                    <p style="color: var(--text-muted); font-size: 1.2rem;">State-of-the-art diagnostic equipment for total certainty.</p>
+                </div>
+                <div class="home-services-grid gs_reveal">
+                    <div class="home-service-card interactable" onclick="navigate('services')">
+                        <h4 class="text-gradient">Mechanical Testing</h4>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Tensile, compressive, and yield strength evaluation using advanced heavy-duty machines.</p>
+                        <span style="color: #fff; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Learn More →</span>
+                    </div>
+                    <div class="home-service-card interactable" onclick="navigate('services')">
+                        <h4 class="text-gradient">Microstructural</h4>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">High-magnification examination to verify grain size and detect microscopic material flaws.</p>
+                        <span style="color: #fff; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Learn More →</span>
+                    </div>
+                    <div class="home-service-card interactable" onclick="navigate('services')">
+                        <h4 class="text-gradient">Impact Analysis</h4>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Charpy/Izod testing to determine material toughness under sudden high-speed collisions.</p>
+                        <span style="color: #fff; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Learn More →</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PAGE 2: ABOUT US -->
+        <div id="view-about" class="page-view">
+            <div class="section-padding">
+                <div class="page-header">
+                    <h1 class="page-title">Forging <span class="text-gradient">Certainty</span></h1>
+                    <p style="color: var(--text-muted); font-size: 1.2rem;">Our history, our facility, and our commitment to accuracy.</p>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; letter-spacing: -1px;">The Benchmark of Testing in Bhilai</h2>
+                        <p style="color: var(--text-muted); font-size: 1.15rem; margin-bottom: 1.5rem;">Located in the heart of the Light Industrial Area, Bhilai, Bhilai Metals and Minerals Testing Services LLP stands at the forefront of material verification. We provide heavy industries with the definitive diagnostic data they need to ensure structural integrity and safety.</p>
+                        <p style="color: var(--text-muted); font-size: 1.15rem;">Equipped with state-of-the-art diagnostic machinery and backed by our rigorous NABL accreditation, our expert team evaluates everything from tensile strength to microscopic internal structures.</p>
+                        
+                        <div class="cert-highlight">
+                            <img src="image_dc81df.jpg" alt="NABL Certificate TC-17749" onerror="this.src='https://placehold.co/300x400/111/FFF?text=NABL+Certificate'">
+                            <h3 style="font-size: 1.5rem; margin-bottom: 5px;">NABL Accredited Facility</h3>
+                            <p class="text-gradient" style="font-weight: 700; margin-bottom: 10px;">ISO/IEC 17025:2017 Certified</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Certificate: TC-17749 | Valid until 2030</p>
+                        </div>
+                    </div>
+                    <div class="about-images">
+                        <img src="WhatsApp Image 2026-04-03 at 1.21.44 PM.jpeg" alt="Team Evaluation" style="border-radius: 24px; margin-bottom: 20px; border: 1px solid var(--border-color);" onerror="this.src='https://placehold.co/800x600/111/FFF?text=Team+Evaluation'">
+                        
+                        <img src="WhatsApp Image 2026-04-03 at 1.21.45 PM.jpeg" alt="Inauguration Team" style="border-radius: 24px; border: 1px solid var(--border-color);" onerror="this.src='https://placehold.co/800x400/111/FFF?text=Inauguration+Team'">
+                    </div>
+                </div>
+
+                <div class="mission-vision-grid">
+                    <div class="mv-card interactable gs_reveal">
+                        <h3 class="text-gradient" style="font-size: 1.8rem; margin-bottom: 1rem; font-weight: 800;">Our Mission</h3>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">To provide accurate, reliable, and cost-effective testing solutions that ensure quality, safety, and compliance for our clients. We are committed to using advanced technology and expert analysis to deliver precise results that support the manufacturing, construction, and engineering industries.</p>
+                    </div>
+                    <div class="mv-card interactable gs_reveal">
+                        <h3 class="text-gradient" style="font-size: 1.8rem; margin-bottom: 1rem; font-weight: 800;">Our Vision</h3>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">To be a trusted leader in testing services, known for innovation, integrity, and excellence, continually contributing to the advancement of material science and industry standards.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 3: SERVICES -->
+        <div id="view-services" class="page-view">
+            <div class="section-padding">
+                <div class="page-header">
+                    <h1 class="page-title">Technical <span class="text-gradient">Capabilities</span></h1>
+                    <p style="color: var(--text-muted); font-size: 1.2rem;">Detailed analytical services using state-of-the-art laboratory equipment.</p>
+                </div>
+
+                <!-- 1. High-Capacity Universal Testing Machine (NEW) -->
+                <div class="service-row interactable">
+                    <div class="service-img-wrapper">
+                        <img src="image_dec740.jpg" alt="High-Capacity FIE Universal Testing Machine" onerror="this.src='https://placehold.co/800x600/111/FFF?text=Heavy+UTM'">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="text-gradient">High-Capacity Universal Testing</h3>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem;">Equipped to handle extreme industrial loads, our massive floor-standing FIE Universal Testing Machine pushes heavy-duty construction materials and industrial metals to their absolute breaking points to ensure unparalleled structural safety.</p>
+                        <ul style="color: var(--text-light); margin-left: 20px; line-height: 2;">
+                            <li>High-Tonnage Tensile Testing</li>
+                            <li>Heavy Industrial Compression Analysis</li>
+                            <li>Proof Stress & Yield Point Evaluation</li>
+                            <li>Transverse & Bending Strength Verification</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 2. Digital Data Acquisition & Control -->
+                <div class="service-row interactable">
+                    <div class="service-img-wrapper">
+                        <img src="WhatsApp Image 2026-04-03 at 1.21.49 PM (1).jpeg" alt="Computerized Universal Testing Machine Console" onerror="this.src='https://placehold.co/800x600/111/FFF?text=UTM+Console'">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="text-gradient">Digital Data Acquisition</h3>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem;">Raw power requires absolute precision. Our testing bays are connected to advanced computerized consoles that capture micro-second data points during material failure, generating automated, highly accurate stress-strain analytics.</p>
+                        <ul style="color: var(--text-light); margin-left: 20px; line-height: 2;">
+                            <li>Real-Time Load & Displacement Tracking</li>
+                            <li>Automated Stress-Strain Curve Generation</li>
+                            <li>Digital Yield & Elongation Reporting</li>
+                            <li>NABL-Compliant Data Logging</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 3. Hardness Testing -->
+                <div class="service-row interactable">
+                    <div class="service-img-wrapper">
+                        <img src="image_dee200.jpg" alt="Rockwell Hardness Testing Machine" onerror="this.src='https://placehold.co/800x600/111/FFF?text=Hardness+Testing'">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="text-gradient">Hardness Testing</h3>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem;">Material durability and wear resistance are paramount in engineering. Featuring our dedicated Rockwell hardness testing apparatus, we accurately evaluate the resistance of your metals to permanent indentation and localized deformation.</p>
+                        <ul style="color: var(--text-light); margin-left: 20px; line-height: 2;">
+                            <li>Rockwell Hardness Evaluation</li>
+                            <li>Brinell Hardness Testing</li>
+                            <li>Surface Durability Verification</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 4. Microstructural Analysis -->
+                <div class="service-row interactable">
+                    <div class="service-img-wrapper">
+                        <img src="WhatsApp Image 2026-04-03 at 1.21.48 PM (2).jpeg" alt="Digital Microscope for Microstructural Analysis" onerror="this.src='https://placehold.co/800x600/111/FFF?text=Microstructural+Analysis'">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="text-gradient">Microstructural Analysis</h3>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem;">Imperfections aren't always visible to the naked eye. Our high-magnification digital optical microscopes allow our metallurgists to examine grain structures, identify phases, and detect microscopic inclusions within metal alloys.</p>
+                        <ul style="color: var(--text-light); margin-left: 20px; line-height: 2;">
+                            <li>Grain Size Measurement</li>
+                            <li>Micro-flaw & Crack Detection</li>
+                            <li>Phase & Alloy Composition Verification</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 5. Impact Testing (Charpy) -->
+                <div class="service-row interactable">
+                    <div class="service-img-wrapper">
+                        <img src="WhatsApp Image 2026-04-03 at 1.21.48 PM.jpeg" alt="FIE Charpy Impact Testing Machine" onerror="this.src='https://placehold.co/800x600/111/FFF?text=Impact+Testing'">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="text-gradient">Impact Analysis</h3>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem;">How does your material react to a sudden, violent collision? Our dedicated FIE pendulum impact testing bay determines the energy absorption characteristics and fracture toughness of materials under extreme, sudden stress.</p>
+                        <ul style="color: var(--text-light); margin-left: 20px; line-height: 2;">
+                            <li>Charpy V-Notch Testing</li>
+                            <li>Izod Impact Testing</li>
+                            <li>Fracture Toughness Evaluation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 6. Precision Sample Preparation -->
+                <div class="service-row interactable">
+                    <div class="service-img-wrapper">
+                        <img src="WhatsApp Image 2026-04-03 at 1.21.50 PM.jpeg" alt="SUN-TECH Polishing and Sample Preparation Machine" onerror="this.src='https://placehold.co/800x600/111/FFF?text=Sample+Preparation'">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="text-gradient">Precision Sample Preparation</h3>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem;">Accurate diagnostics start with absolutely flawless samples. Our preparation bay utilizes advanced SUN-TECH polishing and grinding machinery to prepare metal cross-sections to exact geometric tolerances and mirror-finishes.</p>
+                        <ul style="color: var(--text-light); margin-left: 20px; line-height: 2;">
+                            <li>Micro-grinding & Polishing</li>
+                            <li>Exact Tolerance Machining</li>
+                            <li>Surface Preparation for Micro-Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- PAGE 4: GALLERY -->
+        <div id="view-gallery" class="page-view">
+            <div class="section-padding">
+                <div class="page-header">
+                    <h1 class="page-title">Facility <span class="text-gradient">Tour</span></h1>
+                    <p style="color: var(--text-muted); font-size: 1.2rem;">Inside our state-of-the-art laboratory.</p>
+                </div>
+                
+                <div class="masonry-grid">
+                    <!-- Uploaded Photos -->
+                    <div class="masonry-item interactable"><img src="image_dec740.jpg" alt="High-Capacity FIE Universal Testing Machine" onerror="this.src='https://placehold.co/600x400/111/FFF?text=Photo'"></div>
+                    <div class="masonry-item interactable"><img src="WhatsApp Image 2026-04-03 at 1.21.49 PM (1).jpeg" alt="UTM Control Desk" onerror="this.src='https://placehold.co/400x300/111/FFF?text=Photo'"></div>
+                    <div class="masonry-item interactable"><img src="WhatsApp Image 2026-04-03 at 1.21.50 PM (1).jpeg" alt="Sample Receiving" onerror="this.src='https://placehold.co/400x600/111/FFF?text=Photo'"></div>
+                    <div class="masonry-item interactable"><img src="image_db957a.jpg" alt="Team" onerror="this.src='https://placehold.co/600x400/111/FFF?text=Photo'"></div>
+                    <div class="masonry-item interactable"><img src="image_db951d.jpg" alt="Directors" onerror="this.src='https://placehold.co/400x500/111/FFF?text=Photo'"></div>
+                    <div class="masonry-item interactable"><img src="WhatsApp Image 2026-04-03 at 1.21.51 PM (1).jpeg" alt="Lab Entrance" onerror="this.src='https://placehold.co/400x500/111/FFF?text=Photo'"></div>
+                    <div class="masonry-item interactable"><img src="WhatsApp Image 2026-04-03 at 1.21.51 PM.jpeg" alt="Gate" onerror="this.src='https://placehold.co/600x400/111/FFF?text=Photo'"></div>
+                    <div class="masonry-item interactable"><img src="image_db953a.jpg" alt="Testing" onerror="this.src='https://placehold.co/500x400/111/FFF?text=Photo'"></div>
+                    
+                    <!-- Placeholders to reach 32 -->
+                    <div class="masonry-item interactable"><img src="image_dee200.jpg" alt="Hardness Tester" onerror="this.src='https://placehold.co/400x400/111/FFF?text=Photo+9'"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/600x400/111/FFF?text=Photo+10" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/400x500/111/FFF?text=Photo+11" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/400x700/111/FFF?text=Photo+12" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/500x400/111/FFF?text=Photo+13" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/400x600/111/FFF?text=Photo+14" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/400x400/111/FFF?text=Photo+15" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/600x800/111/FFF?text=Photo+16" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/400x300/111/FFF?text=Photo+17" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/400x500/111/FFF?text=Photo+18" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/500x500/111/FFF?text=Photo+19" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/400x600/111/FFF?text=Photo+20" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/600x400/111/FFF?text=Photo+21" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/400x400/111/FFF?text=Photo+22" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/400x700/111/FFF?text=Photo+23" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/500x400/111/FFF?text=Photo+24" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/400x500/111/FFF?text=Photo+25" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/600x800/111/FFF?text=Photo+26" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/400x400/111/FFF?text=Photo+27" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/400x600/111/FFF?text=Photo+28" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/600x400/111/FFF?text=Photo+29" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/400x500/111/FFF?text=Photo+30" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/500x500/111/FFF?text=Photo+31" alt="Gallery"></div>
+                    <div class="masonry-item interactable"><img src="https://placehold.co/500x500/111/FFF?text=Photo+32" alt="Gallery"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 5: CONTACT -->
+        <div id="view-contact" class="page-view">
+            <div class="section-padding">
+                <div class="page-header">
+                    <h1 class="page-title">Initiate <span class="text-gradient">Testing</span></h1>
+                    <p style="color: var(--text-muted); font-size: 1.2rem;">Ready to verify your materials? Contact our cell today.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="info-block">
+                            <h4>Headquarters & Lab Location</h4>
+                            <p>Plot No.- 134/D-1, Light Industrial Area,<br>Chhawani, Bhilai 490026 (C.G.)</p>
+                        </div>
+                        <div class="info-block">
+                            <h4>Direct Contact Lines</h4>
+                            <p>+91 8982340640<br>+91 9123208255</p>
+                        </div>
+                        <div class="info-block">
+                            <h4>Corporate Identity</h4>
+                            <p style="color: var(--text-muted); font-size: 1rem;">GSTIN: 22ABEFB5102B1ZG<br>NABL Cert: TC-17749 (ISO/IEC 17025:2017)</p>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Inquiry sent successfully!');">
+                        <h3 style="margin-bottom: 2rem; font-size: 1.8rem; font-weight: 800;">Send an Inquiry</h3>
+                        <div class="form-group">
+                            <input type="text" placeholder="Full Name" required class="interactable">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Company / Organization" class="interactable">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address" required class="interactable">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Describe the testing services you require..." required class="interactable"></textarea>
+                        </div>
+                        <button type="submit" class="cta-btn interactable" style="width: 100%;">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <h3 style="margin-bottom: 5px; font-size: 1.8rem; font-weight: 900; letter-spacing: -1px;">Bhilai Metals and Minerals Testing Services LLP</h3>
+        <p class="text-gradient" style="font-weight: 600;">Uncompromising Precision. Total Certainty.</p>
+        <div class="footer-bottom">
+            <p>© 2026 Bhilai Metals and Minerals Testing Services LLP.</p>
+            <p>Engineered for Excellence.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    
+    <script>
+        // --- 1. Multi-Page Routing Logic ---
+        function navigate(pageId) {
+            const views = document.querySelectorAll('.page-view');
+            views.forEach(view => {
+                view.classList.remove('active-view');
+            });
+
+            const navBtns = document.querySelectorAll('.nav-links button');
+            navBtns.forEach(btn => btn.classList.remove('active'));
+            document.getElementById('nav-' + pageId).classList.add('active');
+
+            const targetView = document.getElementById('view-' + pageId);
+            
+            switch(pageId) {
+                case 'home':
+                case 'about':
+                case 'services':
+                case 'gallery':
+                case 'contact':
+                    targetView.classList.add('active-view');
+                    break;
+                default:
+                    document.getElementById('view-home').classList.add('active-view');
+            }
+            window.scrollTo(0,0);
+        }
+
+        // --- 2. Lenis Smooth Scrolling ---
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            smooth: true
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // --- 3. Custom Cursor Logic ---
+        const cursor = document.querySelector('.custom-cursor');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.body.addEventListener('mouseover', (e) => {
+            if(e.target.closest('.interactable, button, a, input, textarea')) {
+                cursor.classList.add('cursor-hover');
+            }
+        });
+        document.body.addEventListener('mouseout', (e) => {
+            if(e.target.closest('.interactable, button, a, input, textarea')) {
+                cursor.classList.remove('cursor-hover');
+            }
+        });
+    </script>
+</body>
+</html>

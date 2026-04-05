@@ -85,6 +85,16 @@
             text-transform: uppercase; letter-spacing: 1px;
         }
 
+        .mobile-nabl-text {
+            display: none;
+            color: var(--accent);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 800;
+            margin-top: 3px;
+        }
+
         /* Hamburger Menu Icon (Hidden on Desktop) */
         .menu-toggle {
             display: none;
@@ -260,34 +270,46 @@
             * { cursor: auto; } .custom-cursor { display: none; }
             .hide-mobile { display: none; } 
             
+            .mobile-nabl-text { display: block; }
+            .nav-brand { display: flex; flex-direction: column; justify-content: center; line-height: 1.1; }
+            
             /* Mobile Menu Styles */
-            .menu-toggle { display: flex; }
+            .menu-toggle { display: flex; z-index: 1001; position: relative; }
             .nabl-badge { display: none; }
             
             .nav-links { 
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 250px;
+                width: 80vw;
+                max-width: 320px;
                 height: 100vh;
-                background: rgba(0, 0, 0, 0.98);
+                background: rgba(9, 9, 11, 0.98);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                padding: 0;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 120px 40px 40px;
                 border: none;
                 border-left: 1px solid var(--border-color);
                 border-radius: 0;
                 transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
                 z-index: 999;
-                gap: 25px;
+                gap: 30px;
+                box-shadow: -15px 0 40px rgba(0,0,0,0.8);
             }
             .nav-links.active {
                 right: 0;
             }
             .nav-links button {
-                font-size: 1.2rem;
+                font-size: 1.6rem;
+                font-weight: 700;
+                padding: 5px 0;
+            }
+            .nav-links button.active::after {
+                left: -20px;
+                bottom: 50%;
+                transform: translateY(50%);
             }
             
             /* Hamburger Animation */
@@ -312,7 +334,7 @@
     <nav class="navbar" id="navbar">
         <a href="#" onclick="navigate('home')" class="logo-container interactable">
             <img src="assets/Bhilai Metals and Minerals Testing Services LLP.png" alt="Logo" class="nav-logo" onerror="this.src='https://placehold.co/80x80/111/FFF?text=Logo'">
-            <span class="nav-brand">Bhilai Metals and Minerals <span class="hide-mobile"><br>Testing Services LLP</span></span>
+            <span class="nav-brand">Bhilai Metals and Minerals <span class="hide-mobile"><br>Testing Services LLP</span><span class="mobile-nabl-text">NABL Accredited</span></span>
         </a>
         
         <div class="nav-links">

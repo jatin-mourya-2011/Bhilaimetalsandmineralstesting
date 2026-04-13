@@ -82,8 +82,8 @@
             z-index: 100; background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color);
         }
-        .logo-container { display: flex; align-items: center; gap: 12px; color: var(--text-main); text-decoration: none; }
-        .nav-logo { width: 40px; height: 40px; border-radius: 50%; background: white; padding: 2px; }
+        .logo-container { display: flex; align-items: center; gap: 15px; color: var(--text-main); text-decoration: none; }
+        .nav-logo { width: 65px; height: 65px; object-fit: contain; }
         .nav-brand { font-weight: 800; font-size: 1rem; letter-spacing: -0.5px; color: white; max-width: 250px; line-height: 1.2;}
         
         .nav-links { display: flex; gap: 30px; background: rgba(255,255,255,0.03); padding: 10px 30px; border-radius: 50px; border: 1px solid var(--border-color); }
@@ -137,14 +137,14 @@
            ========================================= */
         .page-view {
             display: none; opacity: 0; animation: fadeIn 0.5s ease forwards;
-            padding-top: 100px; min-height: 100vh;
+            padding-top: 140px; min-height: 100vh; /* Increased padding for taller navbar */
         }
         .page-view.active-view { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Global Padding */
-        .section-padding { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
-        .page-header { text-align: center; margin-bottom: 4rem; padding-top: 40px; }
+        .section-padding { padding: 80px 5% 100px; max-width: 1400px; margin: 0 auto; }
+        .page-header { text-align: center; margin-bottom: 4rem; padding-top: 20px; }
         .page-title { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; letter-spacing: -2px; margin-bottom: 1rem; color: var(--text-main); }
         
         .text-gradient {
@@ -159,7 +159,7 @@
            ========================================= */
         .hero {
             height: 100vh; display: flex; align-items: center; justify-content: center;
-            padding: 0 5%; position: relative; margin-top: -100px; 
+            padding: 100px 5% 0; position: relative; margin-top: -140px; /* Pushes content down safely below navbar */
             background: radial-gradient(circle at center, rgba(255, 65, 108, 0.15) 0%, transparent 50%),
                         linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.95)), 
                         url('assets/WhatsApp Image 2026-04-07 at 2.12.49 PM.jpeg') center/cover no-repeat; 
@@ -192,7 +192,7 @@
             background: var(--bg-alt); padding: 4rem 5%; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
             position: relative; z-index: 10; text-align: center;
         }
-        .stat-item h3 { font-size: clamp(1.8rem, 2.5vw, 2.8rem); font-weight: 900; margin-bottom: 0.2rem; letter-spacing: -1px; }
+        .stat-item h3 { font-size: clamp(1.6rem, 2.2vw, 2.6rem); font-weight: 900; margin-bottom: 0.2rem; letter-spacing: -1px; }
         .stat-item p { color: var(--text-muted); font-weight: 500; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;}
 
         .home-section { padding: 120px 5%; background: var(--bg-main); }
@@ -271,13 +271,23 @@
             position: relative; width: 100%; border-radius: 24px; overflow: hidden; 
             margin-bottom: 4rem; border: 1px solid var(--border-color); background: var(--bg-alt); 
         }
-        .team-banner img { 
-            width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: center 20%; 
-            filter: grayscale(20%); transition: filter 0.5s; 
+        
+        /* NEW: Split Image Gallery inside the Banner */
+        .team-photo-grid { 
+            display: grid; grid-template-columns: 1fr 1fr; 
+            border-bottom: 1px solid var(--border-color);
         }
-        .team-banner:hover img { filter: grayscale(0%); }
+        .team-photo-wrapper { overflow: hidden; width: 100%; }
+        .team-photo-wrapper:first-child { border-right: 1px solid var(--border-color); }
+        
+        .team-photo-grid img { 
+            width: 100%; height: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: center 20%; 
+            filter: grayscale(20%); transition: filter 0.5s, transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
+        }
+        .team-photo-wrapper:hover img { filter: grayscale(0%); transform: scale(1.05); }
+
         .team-banner-content { 
-            padding: 3rem; background: var(--bg-card); border-top: 1px solid var(--border-color); 
+            padding: 3rem; background: var(--bg-card);
         }
         .team-banner-content h3 { 
             font-size: 2rem; margin-bottom: 1rem; font-weight: 800; color: var(--text-main); 
@@ -423,7 +433,12 @@
             .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
             .home-services-grid, .stats-bar, .events-grid { column-count: 1; grid-template-columns: 1fr; }
-            .team-banner img { aspect-ratio: 4/3; }
+            
+            /* Split Banner adjustments for Mobile */
+            .team-photo-grid { grid-template-columns: 1fr; }
+            .team-photo-wrapper:first-child { border-right: none; border-bottom: 1px solid var(--border-color); }
+            .team-photo-grid img { aspect-ratio: 16/9; }
+
             .team-banner-content { padding: 2rem; }
             .md-profile { grid-template-columns: 1fr; padding: 2rem; }
             .event-card img { height: 260px; }
@@ -483,8 +498,8 @@
 
             <section class="stats-bar">
                 <div class="stat-item gs_reveal">
-                    <h3 class="text-gradient" style="font-size: clamp(1.8rem, 2.5vw, 2.8rem);">Fully Equipped</h3>
-                    <p>All Facilities Available</p>
+                    <h3 class="text-gradient" style="font-size: clamp(1.6rem, 2.2vw, 2.5rem);">All Facilities</h3>
+                    <p>All Facilities Available On-Site</p>
                 </div>
                 <div class="stat-item gs_reveal delay-1">
                     <h3 class="text-gradient">NABL</h3>
@@ -492,7 +507,7 @@
                 </div>
                 <div class="stat-item gs_reveal delay-2">
                     <h3 class="text-gradient">100%</h3>
-                    <p>Accuracy Standard</p>
+                    <p>Accuracy Assurance</p>
                 </div>
             </section>
 
@@ -501,7 +516,7 @@
                     <div class="home-text gs_reveal">
                         <h2 class="page-title" style="text-align: left; padding-top: 0;">Definitive Diagnostics <br>for <span class="text-gradient">Heavy Industry</span></h2>
                         <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem;">Bhilai Metals and Minerals Testing Services LLP is the region's premier testing facility. We provide comprehensive mechanical and metallurgical analysis, ensuring your materials meet the absolute highest safety parameters.</p>
-                        <button onclick="navigate('about')" class="cta-btn interactable" style="padding: 1rem 2rem; font-size: 1rem;">Discover Our Facility</button>
+                        <button onclick="navigate('about')" class="cta-btn interactable" style="padding: 1rem 2rem; font-size: 1rem;">Explore Our Facility</button>
                     </div>
                     <div class="home-image gs_reveal delay-2" style="position: relative;">
                         <img src="assets/WhatsApp Image 2026-04-07 at 2.12.50 PM (3).jpeg" alt="Workshop" style="border-radius: 20px; width: 100%;">
@@ -519,8 +534,8 @@
                 </div>
                 <div class="home-services-grid">
                     <div class="home-service-card interactable gs_reveal" onclick="navigate('services')">
-                        <h4 class="text-gradient">100 Ton UTM Analysis</h4>
-                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">High-capacity tensile, compressive, and yield strength evaluation using our massive FIE 100 Ton machine.</p>
+                        <h4 class="text-gradient">100-Ton UTM Analysis</h4>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">High-capacity tensile, compressive, and yield strength evaluation using our massive FIE 100-Ton machine.</p>
                         <span style="color: #fff; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Learn More →</span>
                     </div>
                     <div class="home-service-card interactable gs_reveal delay-1" onclick="navigate('services')">
@@ -618,7 +633,7 @@
                     </div>
                     <div class="mv-card interactable gs_reveal delay-1">
                         <h3 class="text-gradient" style="font-size: 1.8rem; margin-bottom: 1rem; font-weight: 800;">Our Vision</h3>
-                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">To be a trusted leader in testing services, known for innovation, integrity, and excellence, continually contributing to the advancement of material science and industry standards.</p>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">To be a trusted leader in testing services, known for innovation, integrity, and excellence, continuously contributing to the advancement of material science and industry standards.</p>
                     </div>
                 </div>
 
@@ -687,9 +702,16 @@
                 </div>
 
                 <div class="team-banner interactable gs_reveal">
-                    <img src="assets/WhatsApp Image 2026-04-08 at 4.29.56 PM.jpeg" alt="Technical Team" onerror="this.src='assets/WhatsApp Image 2026-04-08 at 4.29.56 PM.jpg'">
+                    <div class="team-photo-grid">
+                        <div class="team-photo-wrapper">
+                            <img src="assets/WhatsApp Image 2026-04-08 at 4.29.56 PM.jpeg" alt="Technical Team" onerror="this.src='assets/WhatsApp Image 2026-04-08 at 4.29.56 PM.jpg'">
+                        </div>
+                        <div class="team-photo-wrapper">
+                            <img src="assets/WhatsApp Image 2026-04-11 at 12.54.09 PM.jpeg" alt="Operations & Support Team" onerror="this.src='assets/WhatsApp Image 2026-04-11 at 12.54.09 PM.jpg'">
+                        </div>
+                    </div>
                     <div class="team-banner-content">
-                        <h3>Laboratory Operations & Technical Staff</h3>
+                        <h3>Laboratory Operations & Technical Expertise</h3>
                         <p>Our dedicated team of engineers, metallurgists, and technical analysts form the absolute core of Bhilai Metals and Minerals Testing Services LLP. With decades of combined industry experience, our staff brings unparalleled expertise to every diagnostic evaluation we undertake.</p>
                         <p>We invest heavily in continuous competency training to ensure our personnel are always at the forefront of modern material science. Every technician operates in strict compliance with ISO/IEC 17025:2017 protocols and our internal 5S methodology, guaranteeing a flawless chain of custody and zero cross-contamination.</p>
                         <p>From executing high-tonnage mechanical tests to conducting complex microstructural analysis, our team works cohesively to deliver rapid, accurate, and NABL-certified results that the heavy manufacturing and construction industries can trust.</p>
@@ -701,10 +723,10 @@
                         <img src="assets/WhatsApp Image 2026-04-09 at 6.17.55 AM.jpeg" alt="Ravindra Srivasta" onerror="this.src='assets/WhatsApp Image 2026-04-09 at 6.17.55 AM.jpg'">
                     </div>
                     <div class="md-info">
-                        <h3 class="text-gradient">Ravindra Srivasta</h3>
+                        <h3 class="text-gradient">Ravindra Shrivastava</h3>
                         <h4>Managing Director & Partner</h4>
-                        <p>With an unwavering commitment to quality and industrial excellence, Mr. Ravindra Srivasta leads Bhilai Metals and Minerals Testing Services LLP. Under his strategic guidance, the laboratory has established itself as the region's premier hub for material verification and definitive diagnostics.</p>
-                        <p>His vision focuses on integrating cutting-edge technology—like our heavy-duty Universal Testing Machines and Optical Emission Spectrometers—with rigorous operational frameworks. By fostering a culture of integrity, precision, and continuous innovation, Mr. Srivasta ensures that we consistently exceed client expectations and strictly uphold the highest NABL accreditation standards.</p>
+                        <p>With an unwavering commitment to quality and industrial excellence, Mr. Ravindra Shrivastava leads Bhilai Metals and Minerals Testing Services LLP. Under his strategic guidance, the laboratory has established itself as the region's premier hub for material verification and definitive diagnostics.</p>
+                        <p>His vision focuses on integrating cutting-edge technology—like our heavy-duty Universal Testing Machines and Optical Emission Spectrometers—with rigorous operational frameworks. By fostering a culture of integrity, precision, and continuous innovation, Mr. Shrivastava ensures that we consistently exceed client expectations and strictly uphold the highest NABL accreditation standards.</p>
                     </div>
                 </div>
             </div>
@@ -724,7 +746,7 @@
                         <img src="assets/WhatsApp Image 2026-04-07 at 2.12.52 PM.jpeg" alt="100 Ton Universal Testing Machine">
                     </div>
                     <div class="service-content">
-                        <h3 class="text-gradient">100 Ton Universal Testing Machine</h3>
+                        <h3 class="text-gradient">100-Ton Universal Testing Machine</h3>
                         <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem;">At the heart of our mechanical testing facility sits the massive 100 Ton FIE Universal Testing Machine. Designed specifically for heavy industry, this robust equipment executes high-capacity testing on large-scale industrial metals and construction materials, pushing them to their absolute breaking points.</p>
                         <ul style="color: var(--text-light); margin-left: 20px; line-height: 2;">
                             <li>100-Ton High-Capacity Tensile Testing</li>
@@ -807,7 +829,7 @@
                     </div>
                     <div class="service-content">
                         <h3 class="text-gradient">Impact Analysis</h3>
-                        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem;">How does your material react to a sudden, violent collision? Our dedicated pendulum impact testing bay determines the energy absorption characteristics and fracture toughness of materials under extreme, sudden stress.</p>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem;">This test evaluates how materials respond to sudden, high-impact forces. Our dedicated pendulum impact testing bay determines the energy absorption characteristics and fracture toughness of materials under extreme, sudden stress.</p>
                         <ul style="color: var(--text-light); margin-left: 20px; line-height: 2;">
                             <li>Charpy V-Notch Testing</li>
                             <li>Izod Impact Testing</li>
@@ -823,7 +845,7 @@
                     </div>
                     <div class="service-content">
                         <h3 class="text-gradient">Microstructural Analysis</h3>
-                        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem;">Imperfections aren't always visible to the naked eye. Our high-magnification optical microscopes allow our metallurgists to examine grain structures, identify phases, and detect microscopic inclusions within metal alloys.</p>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem;">Imperfections are not always visible to the naked eye. Our high-magnification optical microscopes allow our metallurgists to examine grain structures, identify phases, and detect microscopic inclusions within metal alloys.</p>
                         <ul style="color: var(--text-light); margin-left: 20px; line-height: 2;">
                             <li>Grain Size Measurement</li>
                             <li>Micro-flaw & Crack Detection</li>
@@ -895,7 +917,7 @@
                     <div class="contact-info">
                         <div class="info-block gs_reveal">
                             <h4>Headquarters & Lab Location</h4>
-                            <p>Plot No.- 134/D-1, Light Industrial Area,<br>Chhawani, Bhilai, Chhattisgarh 490011</p>
+                            <p>Plot No.- 134/D-1, Light Industrial Area,<br>Chhawani, Bhilai, Chhattisgarh 490026</p>
                         </div>
                         <div class="info-block gs_reveal delay-1">
                             <h4>Direct Contact Lines</h4>
@@ -956,7 +978,7 @@
     <footer>
         <h3 class="gs_reveal" style="margin-bottom: 5px; font-size: 1.8rem; font-weight: 900; letter-spacing: -1px;">Bhilai Metals and Minerals Testing Services LLP</h3>
         <p class="text-gradient gs_reveal delay-1" style="font-weight: 600;">Uncompromising Precision. Total Certainty.</p>
-        <p class="gs_reveal delay-2" style="color: var(--text-muted); font-size: 0.9rem; margin-top: 15px;">Plot No.- 134/D-1, Light Industrial Area, Chhawani, Bhilai, Chhattisgarh 490011</p>
+        <p class="gs_reveal delay-2" style="color: var(--text-muted); font-size: 0.9rem; margin-top: 15px;">Plot No.- 134/D-1, Light Industrial Area, Chhawani, Bhilai, Chhattisgarh 490026</p>
         <div class="footer-bottom gs_reveal delay-3">
             <p>© 2026 Bhilai Metals and Minerals Testing Services LLP.</p>
             <p>Engineered for Excellence.</p>
